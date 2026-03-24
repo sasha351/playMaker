@@ -1,0 +1,33 @@
+[weights]
+bpm_smoothness   = 0.35
+energy_coherence = 0.35
+genre_consistency = 0.20
+transition_score = 0.10
+
+[bpm]
+max_delta        = 20
+half_time_bias   = 0.6
+
+[energy]
+rms_weight       = 0.5
+spectral_weight  = 0.3
+zcr_weight       = 0.2
+
+[presets.chill_sunday]
+bpm_min  = 60
+bpm_max  = 95
+energy_max = 0.5
+genre_bias = ["ambient", "indie", "folk", "jazz"]
+
+[presets.morning_fuel]
+bpm_min  = 118
+bpm_max  = 160
+energy_min = 0.6
+genre_bias = ["pop", "rock", "electronic", "hip-hop"]
+
+[presets.late_night_drive]
+bpm_min  = 85
+bpm_max  = 120
+energy_min = 0.3
+energy_max = 0.7
+genre_bias = ["electronic", "synthwave", "ambient"]

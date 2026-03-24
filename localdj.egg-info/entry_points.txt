@@ -1,0 +1,2 @@
+[console_scripts]
+dj = localdj.cli.main:cli
