@@ -189,9 +189,9 @@ def generate(
 
     # Export
     output_dir = Path(output).expanduser()
-    timestamp = datetime.datetime.now().strftime("%Y-%m-%d")
+    datestamp = datetime.datetime.now().strftime("%Y-%m-%d")
     preset_part = f"_{preset}" if preset else ""
-    filename = f"{mode.replace('-', '_')}{preset_part}_{timestamp}.m3u8"
+    filename = f"{mode.replace('-', '_')}{preset_part}_{datestamp}.m3u8"
     out_path = output_dir / filename
 
     write_m3u8(playlist, out_path, absolute_paths=not relative)

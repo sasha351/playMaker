@@ -38,4 +38,5 @@ def test_bpm_smoothness_energy_mode() -> None:
     playlist = build_energy_curve_playlist(tracks, shape=CurveShape.ARC)
     bpms = [t["bpm"] for t in playlist]
     for i in range(len(bpms) - 1):
-        assert abs(bpms[i + 1] - bpms[i]) <= 100
+        # Arc sorts by energy, not BPM; max possible delta equals the BPM range (150-80=70)
+        assert abs(bpms[i + 1] - bpms[i]) <= 70

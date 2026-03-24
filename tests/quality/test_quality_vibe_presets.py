@@ -57,4 +57,5 @@ def test_genre_consistency_per_preset() -> None:
         return
     dominant = max(set(genres), key=genres.count)
     consistency = genres.count(dominant) / len(genres)
-    assert consistency > 0.0
+    # With chill_sunday biasing 4/7 genres, dominant share should exceed random (1/7 ~ 14%)
+    assert consistency >= 0.15
