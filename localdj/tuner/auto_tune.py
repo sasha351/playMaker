@@ -8,6 +8,7 @@ from typing import Any
 _WEIGHT_KEYS = ["bpm_smoothness", "energy_coherence", "genre_consistency", "transition_score"]
 _CLAMP_MIN = 0.05
 _CLAMP_MAX = 0.95
+_DEFAULT_WEIGHT = 1.0 / len(_WEIGHT_KEYS)  # equal share when a key is missing
 
 
 def _normalise(weights: dict[str, float]) -> dict[str, float]:
@@ -59,8 +60,8 @@ def update_weights_from_ab(
     new_winner = {}
     new_loser = {}
     for k in _WEIGHT_KEYS:
-        new_winner[k] = min(_CLAMP_MAX, winner_weights.get(k, 0.25) + step)
-        new_loser[k] = max(_CLAMP_MIN, loser_weights.get(k, 0.25) - step)
+        new_winner[k] = min(_CLAMP_MAX, winner_weights.get(k, _DEFAULT_WEIGHT) + step)
+        new_loser[k] = max(_CLAMP_MIN, loser_weights.get(k, _DEFAULT_WEIGHT) - step)
     return _normalise(new_winner), _normalise(new_loser)
 
 
